@@ -1,0 +1,28 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/OverlayImpl.cpp
+// Lines: 638-660
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+OverlayImpl::onManifests(
+    std::shared_ptr<protocol::TMManifests> const& m,
+    std::shared_ptr<PeerImp> const& from)
+{
+    auto const n = m->list_size();
+    auto const& journal = from->pjournal();
+
+    // Defense in depth; PeerImp also checks before adding a job.
+    if (!manifestBatchWithinLimits(*m))
+    {
+        from->charge(Resource::feeInvalidData, "manifest batch limit");
+        return;
+    }
+
+    // Process every listed manifest, but only this many unlisted ones per
+    // message, so one batch cannot cost unbounded cache work.
+    auto const maxUntrusted =
+        untrustedManifestCount(app_.config().MAX_UNTRUSTED_MANIFESTS);
+
+    protocol::TMManifests relay;
+    std::size_t invalid = 0;
+    std::size_t untrusted = 0;
+    std::size_t skippedUntrusted = 0;

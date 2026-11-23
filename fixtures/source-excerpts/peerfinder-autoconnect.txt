@@ -1,0 +1,18 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/peerfinder/detail/Logic.h
+// Lines: 493-505
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+    autoconnect()
+    {
+        std::vector<beast::IP::Endpoint> const none;
+
+        std::lock_guard _(lock_);
+
+        // Count how many more outbound attempts to make
+        //
+        auto needed(counts_.attempts_needed());
+        if (needed == 0)
+            return none;
+
+        ConnectHandouts h(needed, m_squelches);

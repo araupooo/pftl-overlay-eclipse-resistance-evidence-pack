@@ -1,0 +1,16 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/OverlayImpl.cpp
+// Lines: 262-272
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+
+        {
+            // The node gets a reserved slot if it is in our cluster
+            // or if it has a reservation.
+            bool const reserved =
+                static_cast<bool>(app_.cluster().member(publicKey)) ||
+                app_.peerReservations().contains(publicKey);
+            auto const result =
+                m_peerFinder->activate(slot, publicKey, reserved);
+            if (result != PeerFinder::Result::success)
+            {

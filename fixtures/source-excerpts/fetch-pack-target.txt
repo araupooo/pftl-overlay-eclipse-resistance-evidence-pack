@@ -1,0 +1,43 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/app/ledger/detail/LedgerMaster.cpp
+// Lines: 723-760
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+LedgerMaster::getFetchPack(LedgerIndex missing, InboundLedger::Reason reason)
+{
+    LedgerIndex const ledgerIndex = missing + 1;
+
+    auto const haveHash{getLedgerHashForHistory(ledgerIndex, reason)};
+    if (!haveHash || haveHash->isZero())
+    {
+        JLOG(m_journal.error())
+            << "No hash for fetch pack. Missing Index " << missing;
+        return;
+    }
+
+    // Select target Peer based on highest score.  The score is randomized
+    // but biased in favor of Peers with low latency.
+    std::shared_ptr<Peer> target;
+    {
+        int maxScore = 0;
+        auto peerList = app_.overlay().getActivePeers();
+        for (auto const& peer : peerList)
+        {
+            if (peer->hasRange(missing, missing + 1))
+            {
+                int score = peer->getScore(true);
+                if (!target || (score > maxScore))
+                {
+                    target = peer;
+                    maxScore = score;
+                }
+            }
+        }
+    }
+
+    if (target)
+    {
+        protocol::TMGetObjectByHash tmBH;
+        tmBH.set_query(true);
+        tmBH.set_type(protocol::TMGetObjectByHash::otFETCH_PACK);
+        tmBH.set_ledgerhash(haveHash->begin(), 32);

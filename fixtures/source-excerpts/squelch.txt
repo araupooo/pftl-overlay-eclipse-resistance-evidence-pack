@@ -1,0 +1,11 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/ReduceRelayCommon.h
+// Lines: 36-41
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+// min(max(MAX_UNSQUELCH_EXPIRE_DEFAULT, SQUELCH_PER_PEER * number_of_peers),
+//     MAX_UNSQUELCH_EXPIRE_PEERS)
+static constexpr auto MIN_UNSQUELCH_EXPIRE = std::chrono::seconds{300};
+static constexpr auto MAX_UNSQUELCH_EXPIRE_DEFAULT = std::chrono::seconds{600};
+static constexpr auto SQUELCH_PER_PEER = std::chrono::seconds(10);
+static constexpr auto MAX_UNSQUELCH_EXPIRE_PEERS = std::chrono::seconds{3600};

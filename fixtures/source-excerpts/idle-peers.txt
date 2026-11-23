@@ -1,0 +1,18 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/OverlayImpl.cpp
+// Lines: 100-112
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+            JLOG(overlay_.journal_.error()) << "on_timer: " << ec.message();
+        }
+        return;
+    }
+
+    overlay_.m_peerFinder->once_per_second();
+    overlay_.sendEndpoints();
+    overlay_.autoConnect();
+    if (overlay_.app_.config().TX_REDUCE_RELAY_ENABLE)
+        overlay_.sendTxQueue();
+
+    if ((++overlay_.timer_count_ % Tuning::checkIdlePeers) == 0)
+        overlay_.deleteIdlePeers();
