@@ -1,0 +1,12 @@
+PASS build version unchanged: shipped=1.0.9 fresh=1.0.9
+PASS network id unchanged: network_id=2025
+PASS validated ledger advanced: shipped 8286463 -> fresh 8286651
+PASS complete-ledgers floor unchanged: floor=8200054
+PASS quorum unchanged: quorum=17
+PASS validator-list sequence unchanged: VL sequence=30
+PASS validator-list validators unchanged: validators=25
+PASS admin RPCs still refused: peers=403, validators=403
+PASS drill pass counts equal: fresh 24/24, shipped 24/24
+PASS drill case ids identical: 24 case ids match in order
+PASS fresh-clone cadence sane: 3.042 s/ledger
+11/11 compare checks PASS
