@@ -1,0 +1,12 @@
+{
+ "http_status": 200,
+ "method": "ledger_closed",
+ "probed_at_utc": "2026-11-23T02:24:53Z",
+ "response": {
+  "result": {
+   "ledger_hash": "7D65CE58D8CFC7DE07055ED7104ABC2028EAC7E31D1E61EB1EEE6179F6DD79E5",
+   "ledger_index": 8286464,
+   "status": "success"
+  }
+ }
+}

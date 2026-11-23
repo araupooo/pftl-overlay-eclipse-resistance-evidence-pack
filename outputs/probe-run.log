@@ -1,0 +1,30 @@
+[2026-11-23T02:24:49Z] probe start — read-only RPC + public GETs only; no peer connections, no transactions
+[2026-11-23T02:24:51Z] rpc server_info -> HTTP 200 (saved outputs/rpc-server_info.json)
+[2026-11-23T02:24:52Z] rpc ledger_current -> HTTP 200 (saved outputs/rpc-ledger_current.json)
+[2026-11-23T02:24:53Z] rpc ledger_closed -> HTTP 200 (saved outputs/rpc-ledger_closed.json)
+[2026-11-23T02:24:54Z] rpc fee -> HTTP 200 (saved outputs/rpc-fee.json)
+[2026-11-23T02:24:56Z] rpc feature -> HTTP 200 (saved outputs/rpc-feature.json)
+[2026-11-23T02:24:57Z] rpc validators -> HTTP 403 (saved outputs/rpc-validators.json)
+[2026-11-23T02:24:59Z] rpc peers -> HTTP 403 (saved outputs/rpc-peers.json)
+[2026-11-23T02:25:00Z] rpc ledger_request -> HTTP 403 (saved outputs/rpc-ledger_request.json)
+[2026-11-23T02:25:01Z] GET https://postfiat.org/testnet_vl.json -> HTTP 200, 14781 bytes (saved outputs/testnet_vl.json)
+[2026-11-23T02:25:01Z] validator list: {"http_status": 200, "bytes": 14781, "format": "v2 (blobs_v2)", "publisher_key": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2", "manifest_chars": 288, "blob_sequence": 30, "blob_effective": 848261408, "blob_expiration": 891447293, "validators_in_blob": 25, "blob_bytes_decoded": 10652, "signature_chars": 140}
+[2026-11-23T02:25:02Z] GET https://explorer.testnet.postfiat.org/ -> HTTP 200
+[2026-11-23T02:25:03Z] GET https://explorer.testnet.postfiat.org/health -> HTTP 200
+[2026-11-23T02:25:04Z] GET https://explorer.postfiat.org/ -> HTTP None
+[2026-11-23T02:25:05Z] cadence t0: ledger_current_index=8286469
+[2026-11-23T02:26:06Z] cadence: {'start_seq': 8286469, 'end_seq': 8286489, 'ledgers': 20, 'elapsed_seconds': 61.0, 'seconds_per_ledger': 3.049}
+[2026-11-23T02:26:06Z] probe summary written: {"build_version": "1.0.9", "cadence": {"elapsed_seconds": 61.0, "end_seq": 8286489, "ledgers": 20, "seconds_per_ledger": 3.049, "start_seq": 8286469}, "complete_ledgers": "8200054-8286463", "explorer": {"https://explorer.postfiat.org/": {"body_head": "<urlopen error Remote end closed connection without response>", "http_status": null}, "https://explorer.testnet.postfiat.org/": {"body_head": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"ap", "http_status": 200}, "https://explorer.testnet.postfiat.org/health": {"body_head": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"ap", "http_status": 200}}, "feature_enabled": 64, "feature_entries": 101, "hostid": "MUFF", "io_latency_ms": 1, "ledger_closed_index": 8286464, "ledger_current_index": 8286464, "ledger_request_rpc_http_status": 403, "load_factor": 1, "network_id": 2025, "peer_disconnects": "103", "peers": 21, "peers_rpc_http_status": 403, "probed_at_utc": "2026-11-23T02:26:06Z", "rpc_calls": 14, "rpc_endpoint": "https://rpc.testnet.postfiat.org/", "server_state": "full", "validated_ledger_age": 2, "validated_ledger_seq": 8286463, "validation_quorum": 17, "validator_list": {"blob_bytes_decoded": 10652, "blob_effective": 848261408, "blob_expiration": 891447293, "blob_sequence": 30, "bytes": 14781, "format": "v2 (blobs_v2)", "http_status": 200, "manifest_chars": 288, "publisher_key": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2", "signature_chars": 140, "validators_in_blob": 25}, "validators_rpc_http_status": 403}
+[2026-11-23T02:26:06Z] digests of probe outputs (full SHA-256):
+[2026-11-23T02:26:06Z]   sha256 4cb8a62a50c976e91ac6eeab76a47d19b1daf997b1840fa8e5e8f8f860c6bce8  drill-run.log
+[2026-11-23T02:26:06Z]   sha256 85ba1f3487b7c71ed6afe2f3ea6559fe048387b03c4c7c75f4e84dfb3837ae69  probe-run.log
+[2026-11-23T02:26:06Z]   sha256 dbf526bffb4fece0e127d673685092590c5e5c4bc6f674ec2bfb36a2cc8915ac  rpc-feature.json
+[2026-11-23T02:26:06Z]   sha256 fc059163ed5fd25fc6e178268ba059e4855775150856c9316382c8113bca97b9  rpc-fee.json
+[2026-11-23T02:26:06Z]   sha256 862f58b61af8996b95bf1e341c4e022832a38f9d0f3feb46f9e4ea7e9965f5eb  rpc-ledger_closed.json
+[2026-11-23T02:26:06Z]   sha256 ed03616a97540cb9f1f6146a15d435ca34fda056e07ecc775821dbfacdbaf9e4  rpc-ledger_current.json
+[2026-11-23T02:26:06Z]   sha256 b306738836d658d8d44ba9f7e3b95b50f7e0f94d1306b7fe11ae4f1a76d3ca70  rpc-ledger_request.json
+[2026-11-23T02:26:06Z]   sha256 198cda9e1dbfb5efa98cfe8f202caccc08d122548e3146ae4aad0f55bc4b8152  rpc-peers.json
+[2026-11-23T02:26:06Z]   sha256 707e67f378335129fa245ac099a9a7b6e5d208abd889b144cc09aa6ef70b52b7  rpc-server_info.json
+[2026-11-23T02:26:06Z]   sha256 0465827c4ac7ca2b971bf751b3d5fe2b0b2a727d14efb72f7c1e2d447a87f3ec  rpc-validators.json
+[2026-11-23T02:26:06Z]   sha256 5d4f5a18a18fead4105e5dc00cf7e11a71b9be4bc140357d1b4ea12116df59e7  testnet_vl.json
+[2026-11-23T02:26:06Z] probe end — 14 HTTP calls total (RPC + GETs)

@@ -1,0 +1,11 @@
+{
+ "http_status": 200,
+ "method": "ledger_current",
+ "probed_at_utc": "2026-11-23T02:24:52Z",
+ "response": {
+  "result": {
+   "ledger_current_index": 8286464,
+   "status": "success"
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "http_status": 403,
+ "method": "ledger_request",
+ "probed_at_utc": "2026-11-23T02:25:00Z",
+ "response": {
+  "body": "Forbidden\r\n",
+  "http_error": 403
+ }
+}
