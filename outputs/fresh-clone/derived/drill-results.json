@@ -1,0 +1,196 @@
+{
+ "drills": {
+  "A": {
+   "cases": [
+    {
+     "detail": "default slots out=10 inbound=11 total=21; live node reports 21 peers = exactly the default cap",
+     "elapsed_ms": 0.01,
+     "id": "A-01",
+     "label": "default slot split",
+     "status": "PASS"
+    },
+    {
+     "detail": "inbound fill needs 6 distinct public IPs at ipLimit=2 (ceil(11/2)); one IP can hold at most 2 inbound slots",
+     "elapsed_ms": 0.01,
+     "id": "A-02",
+     "label": "distinct IPs to fill inbound",
+     "status": "PASS"
+    },
+    {
+     "detail": "P(all 10 outbound slots attacker-controlled): share 0.25 -> 9.54e-07, share 0.50 -> 9.77e-04, share 0.90 -> 0.349",
+     "elapsed_ms": 0.01,
+     "id": "A-03",
+     "label": "outbound-eclipse probability vs pool share",
+     "status": "PASS"
+    },
+    {
+     "detail": "with 1 fixed peer, attacker must win 9/9 remaining outbound slots: P=0.387 at share 0.90 (vs 0.349 for 10/10)",
+     "elapsed_ms": 0.0,
+     "id": "A-04",
+     "label": "fixed peer reduces the attacker window",
+     "status": "PASS"
+    },
+    {
+     "detail": "eclipsing 1 validator leaves 24/25, quorum 17 still reachable \u2014 isolation, not forged consensus",
+     "elapsed_ms": 0.0,
+     "id": "A-05",
+     "label": "one eclipsed validator, quorum survives",
+     "status": "PASS"
+    },
+    {
+     "detail": "8 eclipsed -> 17 remain, quorum reachable; 9 eclipsed -> 16 remain, quorum NOT reachable (consensus halts)",
+     "elapsed_ms": 0.0,
+     "id": "A-06",
+     "label": "validators that must fall to halt quorum",
+     "status": "PASS"
+    },
+    {
+     "detail": "latency cancels the have-item bonus at 333.33 ms; 5 ms attacker vs twenty 50 ms peers wins the fetch-pack pick in 0.182 of trials (fair share 0.0476)",
+     "elapsed_ms": 287.35,
+     "id": "A-07",
+     "label": "peer-score latency edge is small",
+     "status": "PASS"
+    },
+    {
+     "detail": "full eclipse needs 21 slots (10 out + 11 in) from >=6 IPs; attacker share > 0.933 needed for P(eclipse) > 0.5 on the outbound side alone",
+     "elapsed_ms": 0.02,
+     "id": "A-08",
+     "label": "full-eclipse cost summary",
+     "status": "PASS"
+    }
+   ],
+   "passed": 8,
+   "total": 8,
+   "wall_ms": 287.52
+  },
+  "B": {
+   "cases": [
+    {
+     "detail": "losing 1 outbound peer refills in 10 s (one 10 s batch)",
+     "elapsed_ms": 0.01,
+     "id": "B-01",
+     "label": "lose 1 outbound peer",
+     "status": "PASS"
+    },
+    {
+     "detail": "losing all 10 outbound peers refills in 10 s \u2014 one batch holds up to 20 attempts",
+     "elapsed_ms": 0.0,
+     "id": "B-02",
+     "label": "lose all 10 outbound peers",
+     "status": "PASS"
+    },
+    {
+     "detail": "3 failed endpoints in the first batch: refill in 21 s (one failed batch, backoff 1 s, retry batch)",
+     "elapsed_ms": 0.01,
+     "id": "B-03",
+     "label": "failed endpoints delay refill",
+     "status": "PASS"
+    },
+    {
+     "detail": "backoff ladder [1, 1, 2, 3, 5, 8, 13, 21, 34, 55] sums to 143 s over 10 failures; wait caps at 55 s",
+     "elapsed_ms": 0.01,
+     "id": "B-04",
+     "label": "connection backoff ladder",
+     "status": "PASS"
+    },
+    {
+     "detail": "idle-peer sweep runs every 4 s (timer tick 1 s, checkIdlePeers=4); autoconnect batch every 10 s",
+     "elapsed_ms": 0.0,
+     "id": "B-05",
+     "label": "idle sweep and autoconnect cadence",
+     "status": "PASS"
+    },
+    {
+     "detail": "losing 21 peers needs 2 batches (20 attempts max per batch): refill in 20 s",
+     "elapsed_ms": 0.0,
+     "id": "B-06",
+     "label": "attempt cap forces a second batch",
+     "status": "PASS"
+    }
+   ],
+   "passed": 6,
+   "total": 6,
+   "wall_ms": 0.09
+  },
+  "C": {
+   "cases": [
+    {
+     "detail": "487-byte manifest (largest legitimate size) accepted",
+     "elapsed_ms": 0.0,
+     "id": "C-01",
+     "label": "largest legitimate manifest accepted",
+     "status": "PASS"
+    },
+    {
+     "detail": "512-byte manifest (the cap) accepted",
+     "elapsed_ms": 0.0,
+     "id": "C-02",
+     "label": "cap-boundary manifest accepted",
+     "status": "PASS"
+    },
+    {
+     "detail": "513-byte manifest rejected \u2014 the manifest_flood_test.cpp:238 case",
+     "elapsed_ms": 0.0,
+     "id": "C-03",
+     "label": "513-byte manifest rejected",
+     "status": "PASS"
+    },
+    {
+     "detail": "1024-byte manifest rejected",
+     "elapsed_ms": 0.0,
+     "id": "C-04",
+     "label": "1024-byte manifest rejected",
+     "status": "PASS"
+    },
+    {
+     "detail": "batch of 500 manifests totalling 256000 bytes is within limits (500 count, 512 KiB bytes)",
+     "elapsed_ms": 0.0,
+     "id": "C-05",
+     "label": "batch at both limits accepted",
+     "status": "PASS"
+    },
+    {
+     "detail": "batch of 501 manifests rejected on count (> maxManifestBatchCount 500)",
+     "elapsed_ms": 0.0,
+     "id": "C-06",
+     "label": "batch over count limit rejected",
+     "status": "PASS"
+    },
+    {
+     "detail": "batch totalling 524289 bytes rejected on size (> maxManifestBatchBytes 512 KiB)",
+     "elapsed_ms": 0.0,
+     "id": "C-07",
+     "label": "batch over byte limit rejected",
+     "status": "PASS"
+    },
+    {
+     "detail": "untrusted greeting payload bounded at 512000 bytes (1000 manifests x 512 B)",
+     "elapsed_ms": 0.0,
+     "id": "C-08",
+     "label": "untrusted greeting payload bound",
+     "status": "PASS"
+    },
+    {
+     "detail": "legacy dump limit 268435455 bytes (256 MiB - 1), one dump per connection, 300 s deadline; 300 MiB dump rejected, 200 MiB drained once",
+     "elapsed_ms": 0.0,
+     "id": "C-09",
+     "label": "legacy dump drain limits",
+     "status": "PASS"
+    },
+    {
+     "detail": "1 GiB of manifest payload needs >= 2048 bounded batches (512 KiB each); a single message cannot carry more",
+     "elapsed_ms": 0.0,
+     "id": "C-10",
+     "label": "flood-rate bound per batch",
+     "status": "PASS"
+    }
+   ],
+   "passed": 10,
+   "total": 10,
+   "wall_ms": 0.05
+  }
+ },
+ "total_cases": 24,
+ "total_pass": 24,
+ "total_wall_ms": 287.7
+}

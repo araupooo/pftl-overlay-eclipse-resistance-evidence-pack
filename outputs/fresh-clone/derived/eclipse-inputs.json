@@ -1,0 +1,35 @@
+{
+ "eclipse_probability_by_pool_share": {
+  "0.1": 1.0000000000000006e-10,
+  "0.25": 9.5367431640625e-07,
+  "0.5": 0.0009765625,
+  "0.75": 0.056313514709472656,
+  "0.9": 0.3486784401000001,
+  "0.95": 0.5987369392383787
+ },
+ "min_ips_to_fill_inbound": 6,
+ "quorum_after_eclipse": {
+  "1": {
+   "quorum": 17,
+   "quorum_still_reachable": true,
+   "remaining_validators": 24
+  },
+  "8": {
+   "quorum": 17,
+   "quorum_still_reachable": true,
+   "remaining_validators": 17
+  },
+  "9": {
+   "quorum": 17,
+   "quorum_still_reachable": false,
+   "remaining_validators": 16
+  }
+ },
+ "score_latency_edge_ms": 333.3333333333333,
+ "share_needed_for_p_eclipse_over_half": 0.9330329915368074,
+ "slots": {
+  "inbound": 11,
+  "outbound": 10,
+  "total": 21
+ }
+}

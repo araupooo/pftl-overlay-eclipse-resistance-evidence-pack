@@ -1,0 +1,45 @@
+{
+ "all_pass": true,
+ "checks": [
+  {
+   "check": "peers-at-default-cap",
+   "detail": "live peers=21, defaultMaxPeers=21",
+   "status": "PASS"
+  },
+  {
+   "check": "quorum-17-of-25",
+   "detail": "validation_quorum=17",
+   "status": "PASS"
+  },
+  {
+   "check": "validator-list-25",
+   "detail": "validators in VL blob=25",
+   "status": "PASS"
+  },
+  {
+   "check": "validator-list-seq-30",
+   "detail": "VL blob sequence=30",
+   "status": "PASS"
+  },
+  {
+   "check": "admin-rpc-refused",
+   "detail": "peers=403, validators=403",
+   "status": "PASS"
+  },
+  {
+   "check": "drills-all-pass",
+   "detail": "24/24 cases pass",
+   "status": "PASS"
+  },
+  {
+   "check": "drill-per-case-timing",
+   "detail": "every drill case carries elapsed_ms",
+   "status": "PASS"
+  },
+  {
+   "check": "cadence-measured",
+   "detail": "20 ledgers in 60.8 s = 3.042 s/ledger",
+   "status": "PASS"
+  }
+ ]
+}

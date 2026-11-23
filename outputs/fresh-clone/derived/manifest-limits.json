@@ -1,0 +1,11 @@
+{
+ "batches_needed_for_1gib": 2048,
+ "default_max_untrusted_manifests": 1000,
+ "legacy_dump_deadline_seconds": 300,
+ "legacy_dump_limit_bytes": 268435455,
+ "max_legit_manifest_bytes": 487,
+ "max_manifest_batch_bytes": 524288,
+ "max_manifest_batch_count": 500,
+ "max_manifest_bytes": 512,
+ "untrusted_greeting_bytes_bound": 512000
+}
