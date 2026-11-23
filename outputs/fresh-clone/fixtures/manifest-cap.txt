@@ -1,0 +1,27 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/ManifestMessages.h
+// Lines: 19-40
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+inline constexpr std::size_t maxManifestBatchCount = 500;
+inline constexpr std::size_t maxManifestBatchBytes = 512 * 1024;
+// Largest serialized manifest the format can legitimately carry:
+//   sfVersion 4 + sfSequence 5 + sfPublicKey 35 + sfSigningPubKey 35 +
+//   sfSignature 74 + sfMasterSignature 75 + sfDomain (256 + 3) = 487 bytes.
+inline constexpr std::size_t maxManifestBytes = 512;
+
+inline bool
+manifestBatchWithinLimits(protocol::TMManifests const& batch)
+{
+    return batch.list_size() <= maxManifestBatchCount &&
+        Message::messageSize(batch) <= maxManifestBatchBytes;
+}
+
+// Size-gate a serialized manifest before decoding it. Trust is decided by the
+// caller against the validator list; this only rejects oversized input.
+inline std::optional<Manifest>
+deserializeBoundedManifest(std::string const& bytes)
+{
+    if (bytes.size() > maxManifestBytes)
+        return std::nullopt;
+    return deserializeManifest(bytes);

@@ -1,0 +1,21 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/app/misc/ValidatorList.h
+// Lines: 880-895
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+
+    /** Check response for trusted valid published list
+
+        @return `ListDisposition::accepted` if list can be applied
+
+        @par Thread Safety
+
+        Calling public member function is expected to lock mutex
+    */
+    std::pair<ListDisposition, std::optional<PublicKey>>
+    verify(
+        lock_guard const&,
+        Json::Value& list,
+        Manifest manifest,
+        std::string const& blob,
+        std::string const& signature);

@@ -1,0 +1,18 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/ProtocolVersion.cpp
+// Lines: 33-45
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+/** The list of protocol versions we speak and we prefer to use.
+
+    @note The list must be sorted in strictly ascending order (and so
+          it may not contain any duplicates!)
+*/
+
+// clang-format off
+constexpr ProtocolVersion const supportedProtocolList[]
+{
+    {2, 1},
+    {2, 2}
+};
+// clang-format on

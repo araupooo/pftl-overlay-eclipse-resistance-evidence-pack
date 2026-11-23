@@ -1,0 +1,19 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/ObjectByHashLimits.h
+// Lines: 14-27
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+
+inline constexpr int maxObjectByHashRequestObjects = 4096;
+inline constexpr std::size_t maxObjectByHashReplyBytes = 8 * 1024 * 1024;
+
+inline bool
+objectByHashRequestWithinLimits(protocol::TMGetObjectByHash const& request)
+{
+    // Reduced-relay peers legitimately request the existing 10,000-hash
+    // transaction queue in one message. Preserve that protocol limit.
+    auto const limit =
+        request.type() == protocol::TMGetObjectByHash::otTRANSACTIONS
+        ? reduce_relay::MAX_TX_QUEUE_SIZE
+        : maxObjectByHashRequestObjects;
+    return request.objects_size() <= limit;

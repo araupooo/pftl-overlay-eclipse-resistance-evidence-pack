@@ -1,0 +1,40 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/peerfinder/detail/Tuning.h
+// Lines: 39-44, 46-52, 54-63, 65-70, 79-80
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+    /** Time to wait between making batches of connection attempts */
+    secondsPerConnect = 10
+
+    /** Maximum number of simultaneous connection attempts. */
+    ,
+    maxConnectAttempts = 20
+[...]
+    /** The percentage of total peer slots that are outbound.
+        The number of outbound peers will be the larger of the
+        minOutCount and outPercent * Config::maxPeers specially
+        rounded.
+    */
+    ,
+    outPercent = 15
+[...]
+    /** A hard minimum on the number of outgoing connections.
+        This is enforced outside the Logic, so that the unit test
+        can use any settings it wants.
+    */
+    ,
+    minOutCount = 10
+
+    /** The default value of Config::maxPeers. */
+    ,
+    defaultMaxPeers = 21
+[...]
+    /** Max redirects we will accept from one connection.
+        Redirects are limited for security purposes, to prevent
+        the address caches from getting flooded.
+    */
+    ,
+    maxRedirects = 30
+[...]
+static std::array<int, 10> const connectionBackoff{
+    {1, 1, 2, 3, 5, 8, 13, 21, 34, 55}};

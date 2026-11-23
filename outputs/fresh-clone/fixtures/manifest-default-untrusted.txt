@@ -1,0 +1,16 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/app/misc/Manifest.h
+// Lines: 280-290
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+    validators the network may be asked to score, so candidates outside the
+    UNL stay visible to nodes.
+*/
+constexpr std::size_t defaultMaxUntrustedManifests = 1000;
+
+/** The untrusted manifest bound to use, given the optional config override. */
+constexpr std::size_t
+untrustedManifestCount(std::optional<std::size_t> const& configured)
+{
+    return configured.value_or(defaultMaxUntrustedManifests);
+}

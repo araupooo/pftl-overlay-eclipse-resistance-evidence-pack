@@ -1,0 +1,28 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/ManifestMessages.h
+// Lines: 50-72
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+makeManifestMessages(
+    ManifestCache const& cache,
+    ValidatorList const& validators,
+    std::size_t maxUntrusted)
+{
+    std::vector<std::shared_ptr<Message>> messages;
+    protocol::TMManifests batch;
+    auto flush = [&] {
+        if (batch.list_size())
+        {
+            messages.push_back(
+                std::make_shared<Message>(batch, protocol::mtMANIFESTS));
+            batch.Clear();
+        }
+    };
+    auto append = [&](std::string const& serialized) {
+        if (serialized.size() > maxManifestBytes)
+            return;
+        // Two nested length-delimited protobuf fields need at most 12 bytes
+        // of overhead for an object bounded by maxManifestBytes.
+        if (batch.list_size() >= maxManifestBatchCount ||
+            Message::messageSize(batch) + serialized.size() + 12 >
+                maxManifestBatchBytes)

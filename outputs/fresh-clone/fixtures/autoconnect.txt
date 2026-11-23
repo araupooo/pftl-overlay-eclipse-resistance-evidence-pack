@@ -1,0 +1,16 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/OverlayImpl.cpp
+// Lines: 1401-1411
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+OverlayImpl::autoConnect()
+{
+    auto const result = m_peerFinder->autoconnect();
+    for (auto addr : result)
+        connect(addr);
+}
+
+void
+OverlayImpl::sendEndpoints()
+{
+    auto const result = m_peerFinder->buildEndpointsForPeers();

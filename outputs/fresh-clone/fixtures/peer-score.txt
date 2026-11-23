@@ -1,0 +1,41 @@
+// Source: postfiatorg/postfiatd @ 0085a1ff885d6a446369cf73a4430f75af22be55
+// File: src/xrpld/overlay/detail/PeerImp.cpp
+// Lines: 3623-3658
+// Verbatim excerpt; line numbers verified with grep -n on the pinned checkout.
+
+PeerImp::getScore(bool haveItem) const
+{
+    // Random component of score, used to break ties and avoid
+    // overloading the "best" peer
+    static int const spRandomMax = 9999;
+
+    // Score for being very likely to have the thing we are
+    // look for; should be roughly spRandomMax
+    static int const spHaveItem = 10000;
+
+    // Score reduction for each millisecond of latency; should
+    // be roughly spRandomMax divided by the maximum reasonable
+    // latency
+    static int const spLatency = 30;
+
+    // Penalty for unknown latency; should be roughly spRandomMax
+    static int const spNoLatency = 8000;
+
+    int score = rand_int(spRandomMax);
+
+    if (haveItem)
+        score += spHaveItem;
+
+    std::optional<std::chrono::milliseconds> latency;
+    {
+        std::lock_guard sl(recentLock_);
+        latency = latency_;
+    }
+
+    if (latency)
+        score -= latency->count() * spLatency;
+    else
+        score -= spNoLatency;
+
+    return score;
+}
