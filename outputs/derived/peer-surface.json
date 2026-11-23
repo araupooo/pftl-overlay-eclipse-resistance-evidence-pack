@@ -1,0 +1,61 @@
+{
+ "admin_rpc_refusals": {
+  "ledger_request": 403,
+  "peers": 403,
+  "validators": 403
+ },
+ "build_version": "1.0.9",
+ "cadence": {
+  "elapsed_seconds": 61.0,
+  "end_seq": 8286489,
+  "ledgers": 20,
+  "seconds_per_ledger": 3.049,
+  "start_seq": 8286469
+ },
+ "complete_ledgers": "8200054-8286463",
+ "default_max_peers": 21,
+ "explorer": {
+  "https://explorer.postfiat.org/": {
+   "body_head": "<urlopen error Remote end closed connection without response>",
+   "http_status": null
+  },
+  "https://explorer.testnet.postfiat.org/": {
+   "body_head": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"ap",
+   "http_status": 200
+  },
+  "https://explorer.testnet.postfiat.org/health": {
+   "body_head": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"ap",
+   "http_status": 200
+  }
+ },
+ "feature_enabled": 64,
+ "feature_entries": 101,
+ "inbound_slots_at_default": 11,
+ "io_latency_ms": 1,
+ "ledger_closed_index": 8286464,
+ "ledger_current_index": 8286464,
+ "load_factor": 1,
+ "network_id": 2025,
+ "outbound_slots_at_default": 10,
+ "peer_disconnects_total": "103",
+ "peers_equal_default_cap": true,
+ "peers_reported": 21,
+ "probed_at_utc": "2026-11-23T02:26:06Z",
+ "server_state": "full",
+ "validated_ledger_age_seconds": 2,
+ "validated_ledger_seq": 8286463,
+ "validation_quorum": 17,
+ "validator_list": {
+  "blob_bytes_decoded": 10652,
+  "blob_effective": 848261408,
+  "blob_expiration": 891447293,
+  "blob_sequence": 30,
+  "bytes": 14781,
+  "format": "v2 (blobs_v2)",
+  "http_status": 200,
+  "manifest_chars": 288,
+  "publisher_key": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2",
+  "signature_chars": 140,
+  "validators_in_blob": 25
+ }
+}

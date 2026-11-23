@@ -1,0 +1,58 @@
+{
+ "build_version": "1.0.9",
+ "cadence": {
+  "elapsed_seconds": 61.0,
+  "end_seq": 8286489,
+  "ledgers": 20,
+  "seconds_per_ledger": 3.049,
+  "start_seq": 8286469
+ },
+ "complete_ledgers": "8200054-8286463",
+ "explorer": {
+  "https://explorer.postfiat.org/": {
+   "body_head": "<urlopen error Remote end closed connection without response>",
+   "http_status": null
+  },
+  "https://explorer.testnet.postfiat.org/": {
+   "body_head": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"ap",
+   "http_status": 200
+  },
+  "https://explorer.testnet.postfiat.org/health": {
+   "body_head": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"><meta name=\"theme-color\" content=\"#ffffff\"><meta name=\"ap",
+   "http_status": 200
+  }
+ },
+ "feature_enabled": 64,
+ "feature_entries": 101,
+ "hostid": "MUFF",
+ "io_latency_ms": 1,
+ "ledger_closed_index": 8286464,
+ "ledger_current_index": 8286464,
+ "ledger_request_rpc_http_status": 403,
+ "load_factor": 1,
+ "network_id": 2025,
+ "peer_disconnects": "103",
+ "peers": 21,
+ "peers_rpc_http_status": 403,
+ "probed_at_utc": "2026-11-23T02:26:06Z",
+ "rpc_calls": 14,
+ "rpc_endpoint": "https://rpc.testnet.postfiat.org/",
+ "server_state": "full",
+ "validated_ledger_age": 2,
+ "validated_ledger_seq": 8286463,
+ "validation_quorum": 17,
+ "validator_list": {
+  "blob_bytes_decoded": 10652,
+  "blob_effective": 848261408,
+  "blob_expiration": 891447293,
+  "blob_sequence": 30,
+  "bytes": 14781,
+  "format": "v2 (blobs_v2)",
+  "http_status": 200,
+  "manifest_chars": 288,
+  "publisher_key": "ED3F1E0DA736FCF99BE2880A60DBD470715C0E04DD793FB862236B070571FC09E2",
+  "signature_chars": 140,
+  "validators_in_blob": 25
+ },
+ "validators_rpc_http_status": 403
+}
